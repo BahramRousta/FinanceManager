@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import CustomUser, Otp
 
-# Register your models here.
+
+class CustomUserAdmin(admin.ModelAdmin):
+    pass
