@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model, login, logout
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.token_blacklist.models import OutstandingToken, BlacklistedToken
@@ -33,6 +33,7 @@ def _handle_login(otp, request):
 
 
 class RegisterApiView(APIView):
+    permission_classes = ([AllowAny])
 
     def get(self, request):
         serializer = OtpRequestSerializer(data=request.query_params)
