@@ -16,6 +16,11 @@ from .serializers import (
 from .models import Transition
 
 
+def _get_user(request):
+    user = CustomUser.objects.filter(username=request.user).first()
+    return user
+
+
 class CreateSingleTransitionAPIView(APIView):
     permission_classes = (IsAuthenticated,)
 
@@ -23,8 +28,7 @@ class CreateSingleTransitionAPIView(APIView):
         serializer = CreateTransitionSerializer(data=request.data)
         if serializer.is_valid():
             data = serializer.validated_data
-            user = CustomUser.objects.filter(username=request.user).first()
-            transition = Transition.objects.create(owner=user, **data)
+            transition = Transition.objects.create(owner=_get_user(request), **data)
             return Response(status=status.HTTP_201_CREATED, data=serializer.data)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST, data=serializer.errors)
@@ -36,9 +40,8 @@ class CreateMultiTransitionAPIView(APIView):
         serializer = CreateTransitionSerializer(data=request.data, many=True)
         if serializer.is_valid():
             data = serializer.validated_data
-            user = user = CustomUser.objects.filter(username=request.user).first()
             for index in data:
-                transition = Transition.objects.create(owner=user,
+                transition = Transition.objects.create(owner=_get_user(request),
                                                        name=index['name'],
                                                        bank=index['bank'],
                                                        category=index['category'],
@@ -54,12 +57,10 @@ class TransitionListAPIView(APIView):
     permission_classes = ([IsAuthenticated])
 
     def get(self, request):
-        user = request.user.id
         try:
-            transitions = Transition.objects.filter(owner_id=user)
+            transitions = Transition.objects.filter(owner=_get_user(request))
             if transitions:
                 serializer = CreateTransitionSerializer(transitions, many=True)
-
             return Response(status=status.HTTP_200_OK, data=serializer.data)
         except:
             return Response(status=status.HTTP_403_FORBIDDEN)
