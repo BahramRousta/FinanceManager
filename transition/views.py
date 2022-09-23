@@ -61,7 +61,7 @@ class TransitionListAPIView(APIView):
             transitions = Transition.objects.filter(owner=_get_user(request))
             if transitions:
                 serializer = CreateTransitionSerializer(transitions, many=True)
-            return Response(status=status.HTTP_200_OK, data=serializer.data)
+                return Response(status=status.HTTP_200_OK, data=serializer.data)
         except:
             return Response(status=status.HTTP_403_FORBIDDEN)
 
