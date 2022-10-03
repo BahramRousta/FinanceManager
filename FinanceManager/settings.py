@@ -116,6 +116,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -124,7 +125,9 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.ScopedRateThrottle'
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'otp_throttle': '1/minute',
-        'login_throttle': '1/minute'
+        'otp_throttle': '3/minute',
+        'login_throttle': '3/minute',
+        'logout': '1/minute',
+        'delete_account': '1/minute',
     }
 }

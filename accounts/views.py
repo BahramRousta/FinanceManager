@@ -6,13 +6,14 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.token_blacklist.models import OutstandingToken, BlacklistedToken
 from rest_framework_simplejwt.tokens import RefreshToken
 from .throttling import GetOTPRateThrottle, LoginRateThrottle
+from .models import Otp
 from accounts.serializers import (
     OtpRequestSerializer,
     RequestOtpResponseSerializer,
     VerifyOtpRequest,
     ObtainTokenSerializer
 )
-from .models import Otp
+from transition.models import Transition
 
 User = get_user_model()
 
@@ -60,6 +61,7 @@ class RegisterApiView(APIView):
 
 class LogOut(APIView):
     permission_classes = ([IsAuthenticated])
+    throttle_scope = 'logout'
 
     def post(self, request):
         tokens = OutstandingToken.objects.filter(user_id=request.user.id)
@@ -70,10 +72,12 @@ class LogOut(APIView):
 
 class DeleteAccount(APIView):
     permission_classes = ([IsAuthenticated])
+    throttle_scope = 'delete_account'
 
     def delete(self, request, *args, **kwargs):
         user = self.request.user
+        transition_list = Transition.objects.filter(owner_id=user.id)
+        transition_list.delete()
         user.delete()
-
-        return Response({"result": "user delete"})
+        return Response(status=status.HTTP_205_RESET_CONTENT)
 
