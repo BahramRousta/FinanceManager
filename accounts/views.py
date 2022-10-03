@@ -1,11 +1,11 @@
-from django.contrib.auth import get_user_model, login, logout
+from django.contrib.auth import get_user_model, login
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.token_blacklist.models import OutstandingToken, BlacklistedToken
 from rest_framework_simplejwt.tokens import RefreshToken
-
+from .throttling import GetOTPRateThrottle, LoginRateThrottle
 from accounts.serializers import (
     OtpRequestSerializer,
     RequestOtpResponseSerializer,
@@ -34,6 +34,7 @@ def _handle_login(otp, request):
 
 class RegisterApiView(APIView):
     permission_classes = ([AllowAny])
+    throttle_classes = [GetOTPRateThrottle, LoginRateThrottle]
 
     def get(self, request):
         serializer = OtpRequestSerializer(data=request.query_params)
@@ -65,3 +66,14 @@ class LogOut(APIView):
         for token in tokens:
             t, _ = BlacklistedToken.objects.get_or_create(token=token)
         return Response(status=status.HTTP_205_RESET_CONTENT)
+
+
+class DeleteAccount(APIView):
+    permission_classes = ([IsAuthenticated])
+
+    def delete(self, request, *args, **kwargs):
+        user = self.request.user
+        user.delete()
+
+        return Response({"result": "user delete"})
+

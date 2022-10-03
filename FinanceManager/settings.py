@@ -119,5 +119,12 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.ScopedRateThrottle'
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'otp_throttle': '1/minute',
+        'login_throttle': '1/minute'
+    }
 }
