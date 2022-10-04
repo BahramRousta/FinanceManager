@@ -18,7 +18,7 @@ class OtpManager(models.Manager):
                                  phone_number=phone_number,
                                  code=code,
                                  created__lt=current_time,
-                                 created__gt=current_time - timedelta(seconds=300),
+                                 created__gt=current_time - timedelta(seconds=120),
                                  is_active=True).first()
 
         if otp:

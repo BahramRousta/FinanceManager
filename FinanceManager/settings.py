@@ -125,7 +125,7 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.ScopedRateThrottle'
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'otp_throttle': '3/minute',
+        'otp_throttle': '1/minute',
         'login_throttle': '3/minute',
         'logout': '1/minute',
         'delete_account': '1/minute',

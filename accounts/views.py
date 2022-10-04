@@ -42,6 +42,7 @@ class RegisterApiView(APIView):
         if serializer.is_valid():
             data = serializer.validated_data
             otp = Otp.objects.create(phone_number=data['phone_number'])
+            # call SMS web service to send otp code
             print(otp.code)
             return Response(data=RequestOtpResponseSerializer(otp).data)
         else:
@@ -51,7 +52,11 @@ class RegisterApiView(APIView):
         serializer = VerifyOtpRequest(data=request.data)
         if serializer.is_valid():
             data = serializer.validated_data
-            if Otp.objects.is_valid(data['request_id'], data['phone_number'], data['code']):
+            if Otp.objects.is_valid(
+                    data['request_id'],
+                    data['phone_number'],
+                    data['code']
+            ):
                 return Response(_handle_login(data, request))
             else:
                 return Response(status=status.HTTP_401_UNAUTHORIZED)
@@ -77,7 +82,10 @@ class DeleteAccount(APIView):
     def delete(self, request, *args, **kwargs):
         user = self.request.user
         transition_list = Transition.objects.filter(owner_id=user.id)
+        # delete user all transition
         transition_list.delete()
         user.delete()
         return Response(status=status.HTTP_205_RESET_CONTENT)
+
+
 
