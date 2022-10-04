@@ -129,5 +129,7 @@ REST_FRAMEWORK = {
         'login_throttle': '3/minute',
         'logout': '1/minute',
         'delete_account': '1/minute',
-    }
+    },
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
 }

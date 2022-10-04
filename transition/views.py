@@ -8,6 +8,7 @@ from rest_framework.generics import (
 )
 from rest_framework.permissions import IsAuthenticated
 from accounts.models import CustomUser
+from .pagination import TransitionListPagination
 from .permission_mixin import IsOwnerTransition
 from .serializers import (
     CreateTransitionSerializer,
@@ -21,7 +22,7 @@ def _get_user(request):
     return user
 
 
-class CreateSingleTransitionAPIView(APIView):
+class SingleTransitionAPIView(APIView):
     permission_classes = (IsAuthenticated,)
 
     def post(self, request):
@@ -34,7 +35,7 @@ class CreateSingleTransitionAPIView(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST, data=serializer.errors)
 
 
-class CreateMultiTransitionAPIView(APIView):
+class MultiTransitionAPIView(APIView):
 
     def post(self, request):
         serializer = CreateTransitionSerializer(data=request.data, many=True)
@@ -55,6 +56,7 @@ class CreateMultiTransitionAPIView(APIView):
 
 class TransitionListAPIView(APIView):
     permission_classes = ([IsAuthenticated])
+    pagination_class = TransitionListPagination
 
     def get(self, request):
         try:
