@@ -10,22 +10,24 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 class UserManager(BaseUserManager):
 
-    def create_user(self, username, email, password=None):
+    def create_user(self, username, password=None, **extra_fields):
         if username is None:
             raise TypeError('Users should have a username')
 
-        user = self.model(username=username, email=email)
+        user = self.model(username=username, **extra_fields)
+
         user.set_password(password)
         user.save()
         return user
 
-    def create_superuser(self, username, email, password=None):
+    def create_superuser(self, username, password=None, **extra_fields):
         if password is None:
             raise TypeError('Password should not be none')
 
-        user = self.create_user(username, email,  password)
+        user = self.create_user(username,  password, **extra_fields)
         user.is_superuser = True
         user.is_staff = True
+        user.is_verified = True
         user.save()
         return user
 
@@ -36,8 +38,8 @@ AUTH_PROVIDERS = {'facebook': 'facebook', 'google': 'google',
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=255, unique=True, db_index=True)
-    email = models.EmailField(max_length=255, unique=True, db_index=True, null=True, blank=True)
-    phone_number = models.CharField(max_length=11)
+    email = models.EmailField(max_length=255, unique=True, db_index=True, blank=True, null=True)
+    phone_number = models.CharField(max_length=11, unique=True, db_index=True, blank=True, null=True)
     is_verified = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -48,7 +50,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         null=False, default=AUTH_PROVIDERS.get('email'))
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email']
+    REQUIRED_FIELDS = []
 
     objects = UserManager()
 

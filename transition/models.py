@@ -1,11 +1,9 @@
 from django.db import models
-
 from accounts.models import CustomUser
 
 
 class Bank(models.Model):
     name = models.CharField(max_length=50, unique=True)
-
     # logo = models.ImageField()
 
     def __str__(self) -> str:
