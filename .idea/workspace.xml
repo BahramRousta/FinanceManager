@@ -1,44 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="37973d58-8186-4d56-971b-9a68dedf7788" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/accounts/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/sms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/social_authentication/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/social_authentication/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/social_authentication/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/social_authentication/google.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/social_authentication/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/social_authentication/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/social_authentication/register.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/social_authentication/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/social_authentication/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/social_authentication/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/social_authentication/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/FinanceManager.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FinanceManager.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinanceManager/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/asgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/migrations/0002_auto_20220913_2036.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/migrations/0003_auto_20220913_2057.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/migrations/0004_alter_customuser_first_name_alter_customuser_id_and_more.py" beforeDir="false" />
+    <list default="true" id="37973d58-8186-4d56-971b-9a68dedf7788" name="Changes" comment="add social auth">
+      <change afterPath="$PROJECT_DIR$/accounts/migrations/0002_alter_customuser_email.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/migrations/0003_alter_customuser_phone_number.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/migrations/0004_alter_customuser_email_alter_customuser_phone_number.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6675b2d0-3c70-4836-b361-67fd7e3e486f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6675b2d0-3c70-4836-b361-67fd7e3e486f.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transition/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/transition/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transition/migrations/0002_transition_owner.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/transition/migrations/0003_alter_bank_id_alter_category_id_alter_subcategory_id_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/transition/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/transition/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,15 +33,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/BahramRousta/Desktop/FinanceManager/core"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/BahramRousta/Desktop/FinanceManager/core&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\BahramRousta\Desktop\FinanceManager\core" />
@@ -110,8 +81,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1672585110949</updated>
-      <workItem from="1672585113131" duration="2361000" />
+      <workItem from="1672585113131" duration="4812000" />
+      <workItem from="1672590714296" duration="1169000" />
     </task>
+    <task id="LOCAL-00001" summary="initial setup project">
+      <created>1672588879324</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1672588879324</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add social auth">
+      <created>1672588917788</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1672588917788</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,5 +117,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="initial setup project" />
+    <MESSAGE value="add social auth" />
+    <option name="LAST_COMMIT_MESSAGE" value="add social auth" />
   </component>
 </project>
